@@ -30,3 +30,5 @@ ObjectPoolManager.ReturnObject(spawnedObject);
 
 ### Other notes
 The pools will grow as needed if you try and retrieve objects when the pool is empty.
+
+While the pool object is essentially a singleton, it's not really designed to be used across scenes. You should only have one ObjectPoolManager active at once.  If you switch scenes, the new scene should have its own ObjectPoolManager, which will override the reference to the older pool.  To me, it made more sense to have the pool be owned by the scene, and I don't work with multiple scenes active at once very often.  I'm sure that I could better support this though.
